@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallBounce : MonoBehaviour
 {
     private Rigidbody _ballRb;
-    private float _bouncePower = 400.0f;
+    private float _bouncePower = 500.0f;
 
     void Start()
     {
