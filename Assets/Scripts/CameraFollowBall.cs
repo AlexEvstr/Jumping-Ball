@@ -6,7 +6,8 @@ public class CameraFollowBall : MonoBehaviour
 {
     public Transform ball;
 
-    public Vector3 offset;
+    private Vector3 offset;
+    private float ballPos = 2f;
 
     private void Start()
     {
@@ -15,7 +16,11 @@ public class CameraFollowBall : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 newPos = Vector3.Lerp(transform.position, ball.position + offset, 1);
-        transform.position = newPos;
+        if (ball.transform.position.y < ballPos)
+        {
+            Vector3 newPos = Vector3.Lerp(transform.position, ball.position + offset, 1f);
+            transform.position = newPos;
+            ballPos = ball.transform.position.y;
+        }
     }
 }
