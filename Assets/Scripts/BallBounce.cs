@@ -22,11 +22,11 @@ public class BallBounce : MonoBehaviour
         // Lose screen if jump on red platform
         else if (other.gameObject.CompareTag("BadGround"))
         {
-            Debug.Log("Game Over");
+            GameManager.gameOver = true;
         }
         else if (other.gameObject.CompareTag("Finish"))
         {
-            Debug.Log("You Win!");
+            GameManager.levelPassed = true;
         }
     }
 }
