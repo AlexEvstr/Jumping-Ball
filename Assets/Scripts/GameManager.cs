@@ -24,21 +24,11 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
-
-            //if (Input.touchCount > 0)
-            //{
-            //    SceneManager.LoadScene(0);
-            //}
         }
         else if (levelPassed == true)
         {
             Time.timeScale = 0;
             levelPassedPanel.SetActive(true);
-
-            //if (Input.touchCount > 0)
-            //{
-            //    SceneManager.LoadScene(0);
-            //}
         }
     }
     public void LoadSceneButon()
