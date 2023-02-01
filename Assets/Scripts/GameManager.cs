@@ -7,12 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public static bool gameOver;
     public static bool levelPassed;
+    public static bool startMenu;
 
     public GameObject gameOverPanel;
     public GameObject levelPassedPanel;
+    public GameObject startMenuPanel;
 
     private void Start()
     {
+        startMenu = true;
         gameOver = false;
         levelPassed = false;
         Time.timeScale = 1;
@@ -34,6 +37,12 @@ public class GameManager : MonoBehaviour
     public void LoadSceneButon()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void StartGameButon()
+    {
+        startMenuPanel.SetActive(false);
+        startMenu = false;
     }
 
 }
