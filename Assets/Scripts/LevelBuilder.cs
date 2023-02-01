@@ -6,7 +6,7 @@ public class LevelBuilder : MonoBehaviour
 {
     public GameObject[] platforms;
     public float platformInterval = 5.0f;
-    private float yPos;
+    private float _yPos;
     public GameObject parentLevel;
     public int levelLength;
 
@@ -29,8 +29,8 @@ public class LevelBuilder : MonoBehaviour
 
     void SpawnPlatform(int index)
     {
-        GameObject newPlatform = Instantiate(platforms[index], new Vector3(transform.position.x, yPos, transform.position.z), Quaternion.identity);
-        yPos -= platformInterval;
+        GameObject newPlatform = Instantiate(platforms[index], new Vector3(transform.position.x, _yPos, transform.position.z), Quaternion.identity);
+        _yPos -= platformInterval;
         newPlatform.transform.SetParent(parentLevel.transform);
     }
 }

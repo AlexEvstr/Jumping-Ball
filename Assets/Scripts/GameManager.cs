@@ -18,19 +18,17 @@ public class GameManager : MonoBehaviour
         startMenu = true;
         gameOver = false;
         levelPassed = false;
-        Time.timeScale = 1;
     }
 
     private void Update()
     {
+        StartGame();
         if (gameOver == true)
         {
-            Time.timeScale = 0;
             gameOverPanel.SetActive(true);
         }
         else if (levelPassed == true)
         {
-            Time.timeScale = 0;
             levelPassedPanel.SetActive(true);
         }
     }
@@ -39,10 +37,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void StartGameButon()
+    public void StartGame()
     {
-        startMenuPanel.SetActive(false);
-        startMenu = false;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            startMenuPanel.SetActive(false);
+            startMenu = false;
+        }
+        
     }
 
 }
