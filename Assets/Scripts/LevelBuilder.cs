@@ -5,13 +5,14 @@ using UnityEngine;
 public class LevelBuilder : MonoBehaviour
 {
     public GameObject[] platforms;
-    public int levelLength = 10;
     public float platformInterval = 5.0f;
     private float yPos;
     public GameObject parentLevel;
+    public int levelLength;
 
     void Start()
     {
+        levelLength = Random.Range(10, 30);
         for (int i = 0; i < levelLength; i++)
         {
             if (i == 0)

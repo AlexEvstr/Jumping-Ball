@@ -10,5 +10,6 @@ public class SplashParticleEffect : MonoBehaviour
     {
         GameObject newParticleEffect = Instantiate(prefabSplashParticleEffect);
         newParticleEffect.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        Destroy(newParticleEffect, 1.5f);
     }
 }
