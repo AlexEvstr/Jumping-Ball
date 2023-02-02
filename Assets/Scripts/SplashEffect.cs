@@ -5,7 +5,7 @@ using UnityEngine;
 public class SplashEffect : MonoBehaviour
 {
     public GameObject prefabSplash;
-
+    // назвать метод и вызвать его в ball
     private void OnCollisionEnter(Collision other)
     {
         GameObject newsplash = Instantiate(prefabSplash);

@@ -12,7 +12,8 @@ public class LevelBuilder : MonoBehaviour
 
     void Start()
     {
-        levelLength = Random.Range(10, 30);
+        levelLength = 3;
+        //levelLength = Random.Range(10, 30);
         for (int i = 0; i < levelLength; i++)
         {
             if (i == 0)

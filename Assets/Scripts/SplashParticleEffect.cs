@@ -5,7 +5,7 @@ using UnityEngine;
 public class SplashParticleEffect : MonoBehaviour
 {
     public GameObject prefabSplashParticleEffect;
-
+    // назвать метод и вызвать в ball
     private void OnCollisionEnter(Collision collision)
     {
         GameObject newParticleEffect = Instantiate(prefabSplashParticleEffect);
@@ -13,3 +13,4 @@ public class SplashParticleEffect : MonoBehaviour
         Destroy(newParticleEffect, 1.5f);
     }
 }
+// убрать using
