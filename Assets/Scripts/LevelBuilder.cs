@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
@@ -12,8 +10,8 @@ public class LevelBuilder : MonoBehaviour
 
     void Start()
     {
-        levelLength = 3;
-        //levelLength = Random.Range(10, 30);
+        levelLength = Random.Range(6,30);
+
         for (int i = 0; i < levelLength; i++)
         {
             if (i == 0)
@@ -25,7 +23,7 @@ public class LevelBuilder : MonoBehaviour
                 SpawnPlatform(Random.Range(1, platforms.Length - 2));
             }
         }
-            SpawnPlatform(platforms.Length - 1);
+        SpawnPlatform(platforms.Length - 1);
     }
 
     void SpawnPlatform(int index)

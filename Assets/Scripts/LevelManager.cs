@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]private int _currentLevelIndex;
-    [SerializeField]private int _nextLevelIndex;
+    private int _currentLevelIndex;
+    private int _nextLevelIndex;
 
     public TextMeshProUGUI _currentLevelText;
     public TextMeshProUGUI _nextLevelText;
-
-
-
 
     void Start()
     {
@@ -23,8 +19,7 @@ public class LevelManager : MonoBehaviour
         _nextLevelText.text = _nextLevelIndex.ToString();
     }
 
-    
-    void LateUpdate()
+    void Update()
     {
         if (GameManager.levelPassed == true)
         {
