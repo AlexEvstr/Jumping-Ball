@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 162630514}
   - component: {fileID: 162630516}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: LevelProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,8 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594ed1c3e0f4c49df9d389ae2426c809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevelText: {fileID: 2040924865}
-  _nextLevelText: {fileID: 2136928899}
 --- !u!4 &162630515
 Transform:
   m_ObjectHideFlags: 0
@@ -328,7 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3d7aedacca047e19a3a38648c26956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 1864408448}
+  _progressBar: {fileID: 1864408448}
+  _levelBuilder: {fileID: 211249888}
+  _ballFacade: {fileID: 1541235308}
 --- !u!1 &211249887
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3037b5d9cc6cf4d33bd49b59a1015e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforms:
+  _prefabPlatforms:
   - {fileID: 8577714993665072243, guid: a891fea5703354e3db9fb62cef93b6d9, type: 3}
   - {fileID: 6841097469094848944, guid: e0a6ded0417f84eb4ab27c07e3cd67e2, type: 3}
   - {fileID: 8435852466716968598, guid: 04490be1e88844a83a43a53840128c28, type: 3}
@@ -370,9 +370,6 @@ MonoBehaviour:
   - {fileID: 8241354670834964806, guid: c2d11b8b5e2d7490fb30c11ee11d64fe, type: 3}
   - {fileID: 6238857613335014051, guid: df754f98c40d84c8d900234de8c6fbcf, type: 3}
   - {fileID: 2857068129816207509, guid: 6ad01d3827a9f4bb8b507b06503ef386, type: 3}
-  platformInterval: 5
-  parentLevel: {fileID: 211249887}
-  levelLength: 0
 --- !u!4 &211249889
 Transform:
   m_ObjectHideFlags: 0
@@ -1607,6 +1604,7 @@ GameObject:
   - component: {fileID: 1048989874}
   - component: {fileID: 1048989876}
   - component: {fileID: 1048989875}
+  - component: {fileID: 1048989877}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -1673,6 +1671,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048989873}
   m_CullTransparentMesh: 1
+--- !u!114 &1048989877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048989873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76556ce4fd7e64f4ba136d11a5c20d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentLevelText: {fileID: 2040924865}
+  _nextLevelText: {fileID: 2136928899}
+  _dataController: {fileID: 162630514}
 --- !u!1 &1069613742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541235307}
   - component: {fileID: 1541235306}
+  - component: {fileID: 1541235308}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2281,9 +2295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b6065fe28cb4f7bb0a33110ee6c0d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 113655352}
-  levelPassedPanel: {fileID: 1793847278}
-  startMenuPanel: {fileID: 1048989873}
+  _gameOverPanel: {fileID: 113655352}
+  _levelPassedPanel: {fileID: 1793847278}
+  _startMenuPanel: {fileID: 1048989873}
 --- !u!4 &1541235307
 Transform:
   m_ObjectHideFlags: 0
@@ -2299,6 +2313,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541235308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541235305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7842e427255e64ea6d7478d7b18e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTranform: {fileID: 1038651994}
+  _levelBuilder: {fileID: 211249888}
+  _levelProgress: {fileID: 162630516}
 --- !u!1 &1572530441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,10 +2889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc2bc804d2364deaa57168c458a405c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceSound: {fileID: 1069613743}
-  ringDestroySound: {fileID: 238297084}
-  gameOverSound: {fileID: 1816444062}
-  levelPassedSound: {fileID: 568372641}
 --- !u!4 &1817595967
 Transform:
   m_ObjectHideFlags: 0

@@ -1,35 +1,49 @@
+using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
-    public GameObject[] platforms;
-    public float platformInterval = 5.0f;
-    private float _yPos;
-    public GameObject parentLevel;
-    public int levelLength;
+    [SerializeField] private GameObject[] _prefabPlatforms;
+    private GameObject _parentLevel;
 
-    void Start()
+    private Queue<RingController> _ringControllers;
+
+    private float _intervalSpawnPlatforms;
+    private float _yPosition;
+    private int _levelLength;
+
+    public int LevelLength => _levelLength;
+
+    private void Awake()
     {
-        levelLength = Random.Range(6,30);
+        _parentLevel = gameObject;
+        _intervalSpawnPlatforms = 5.0f;
+        _levelLength = Random.Range(6,30);
+        _ringControllers = new Queue<RingController>();
 
-        for (int i = 0; i < levelLength; i++)
+        SpawnPlatform(0);
+        for (int i = 1; i < _levelLength; i++)
         {
-            if (i == 0)
-            {
-                SpawnPlatform(0);
-            }
-            else
-            {
-                SpawnPlatform(Random.Range(1, platforms.Length - 2));
-            }
+            SpawnPlatform(Random.Range(1, _prefabPlatforms.Length - 1));
         }
-        SpawnPlatform(platforms.Length - 1);
+        SpawnPlatform(_prefabPlatforms.Length - 1);
     }
 
-    void SpawnPlatform(int index)
+    private void SpawnPlatform(int index)
     {
-        GameObject newPlatform = Instantiate(platforms[index], new Vector3(transform.position.x, _yPos, transform.position.z), Quaternion.identity);
-        _yPos -= platformInterval;
-        newPlatform.transform.SetParent(parentLevel.transform);
+        GameObject platform = Instantiate(
+            _prefabPlatforms[index], 
+            new Vector3(transform.position.x, _yPosition, transform.position.z), 
+            Quaternion.identity);
+
+        _yPosition -= _intervalSpawnPlatforms;
+        platform.transform.SetParent(_parentLevel.transform);
+        _ringControllers.Enqueue(platform.transform.GetChild(0).GetComponent<RingController>());
+    }
+
+    public RingController GetActiveRing()
+    {
+        return _ringControllers.Dequeue();
     }
 }

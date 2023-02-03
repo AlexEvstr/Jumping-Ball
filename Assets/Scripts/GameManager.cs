@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     public static bool levelPassed;
     public static bool startMenu;
 
-    public GameObject gameOverPanel;
-    public GameObject levelPassedPanel;
-    public GameObject startMenuPanel;
+    [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _levelPassedPanel;
+    [SerializeField] private GameObject _startMenuPanel;
 
     private void Start()
     {
@@ -18,18 +18,21 @@ public class GameManager : MonoBehaviour
         levelPassed = false;
     }
 
+
+    //TODO: Óæññ..
     private void Update()
     {
         StartGame();
         if (gameOver == true)
         {
-            gameOverPanel.SetActive(true);
+            _gameOverPanel.SetActive(true);
         }
         else if (levelPassed == true)
         {
-            levelPassedPanel.SetActive(true);
+            _levelPassedPanel.SetActive(true);
         }
     }
+
     public void LoadSceneButon()
     {
         SceneManager.LoadScene(0);
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            startMenuPanel.SetActive(false);
+            _startMenuPanel.SetActive(false);
             startMenu = false;
         }
 
