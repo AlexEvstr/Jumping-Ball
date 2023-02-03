@@ -17,7 +17,7 @@ public class BallFacade : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTranform.position.y < _currentRing.transform.position.y + .3f)
+        if (_playerTranform.position.y < _currentRing.transform.position.y - .3f)
         {
             _ringProgress++;
             _currentRing.DestroyRing();
