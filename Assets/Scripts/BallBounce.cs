@@ -15,7 +15,7 @@ public class BallBounce : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
 
-        if (other.gameObject.CompareTag("GoodGround"))
+        if (other.gameObject.CompareTag("GoodGround") && GameManager.gameOver != true)
         {
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _bouncePower * Time.deltaTime, _rigidbody.velocity.z);
           
