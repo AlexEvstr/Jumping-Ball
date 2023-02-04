@@ -7,7 +7,7 @@ public class BallBounce : MonoBehaviour
 
     private float _bouncePower = 500.0f;
 
-    void Start()
+    private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
