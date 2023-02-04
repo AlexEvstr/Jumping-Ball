@@ -5,6 +5,7 @@ public class BallFacade : MonoBehaviour
     [SerializeField] private Transform _playerTranform;
     [SerializeField] private LevelBuilder _levelBuilder;
     [SerializeField] private LevelProgress _levelProgress;
+    [SerializeField] private AudioManager _audioManager;
     private RingController _currentRing;
     private int _ringProgress;
 
@@ -23,6 +24,7 @@ public class BallFacade : MonoBehaviour
             _currentRing.DestroyRing();
             _levelProgress.FillProgress();
             _currentRing = _levelBuilder.GetActiveRing();
+            _audioManager.PlayRingDestroySound();
         }
     }
 }
