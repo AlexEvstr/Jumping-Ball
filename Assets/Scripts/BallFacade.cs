@@ -1,15 +1,33 @@
 using UnityEngine;
+using Zenject;
 
 public class BallFacade : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTranform;
-    [SerializeField] private LevelBuilder _levelBuilder;
-    [SerializeField] private LevelProgress _levelProgress;
-    [SerializeField] private SoundManager _soundManager;
-    private RingController _currentRing;
+    #region Ref
+    private BallBounce _player;
+    private LevelBuilder _levelBuilder;
+    private LevelProgress _levelProgress;
+    private SoundManager _soundManager;
+    #endregion
 
+    #region Working variable
+    private RingController _currentRing;
     private int _ringProgress;
     public int RingsProgress => _ringProgress;
+    #endregion
+
+    [Inject]
+    private void Construct(
+        BallBounce player, 
+        LevelBuilder levelBuilder,
+        LevelProgress levelProgress,
+        SoundManager soundManager)
+    {
+        _player = player;
+        _levelBuilder = levelBuilder;
+        _levelProgress = levelProgress;
+        _soundManager = soundManager;
+    }
 
     private void Start()
     {
@@ -18,7 +36,7 @@ public class BallFacade : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTranform.position.y < _currentRing.transform.position.y - 1f)
+        if (_player.transform.position.y < _currentRing.transform.position.y - 1f)
         {
             _ringProgress++;
             _currentRing.DestroyRing();

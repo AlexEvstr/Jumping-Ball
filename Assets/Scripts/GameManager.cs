@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameManager : MonoBehaviour
 {
     public static bool gameOver;
     public static bool levelPassed;
     public static bool startMenu;
+
+    private DataController _dataController;
+
+    [Inject]
+    private void Construct(DataController dataController)
+    {
+        _dataController = dataController;
+    }
 
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _levelPassedPanel;
@@ -31,7 +40,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadSceneButon()
+    public void LoadNextLevel()
+    {
+        _dataController.IncreaseLevel();
+        SceneManager.LoadScene(0);
+    }
+
+    public void ReloadScene()
     {
         SceneManager.LoadScene(0);
     }
