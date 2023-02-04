@@ -6,7 +6,6 @@ public class Rotator : MonoBehaviour
 
     private void Update()
     {
-        // Rotate construction by finger
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && GameManager.gameOver == false && GameManager.levelPassed == false)
         {
             float xDeltaPos = Input.GetTouch(0).deltaPosition.x;

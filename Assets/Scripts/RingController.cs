@@ -4,7 +4,7 @@ public class RingController : MonoBehaviour
 {
     private Rigidbody[] _childs;
 
-    private float _explosionForce = 390;
+    private float _explosionForce = 500;
     private float _explosionRadius = 100;
 
     void Start()

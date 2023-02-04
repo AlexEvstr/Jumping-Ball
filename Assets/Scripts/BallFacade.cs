@@ -7,8 +7,8 @@ public class BallFacade : MonoBehaviour
     [SerializeField] private LevelProgress _levelProgress;
     [SerializeField] private AudioManager _audioManager;
     private RingController _currentRing;
-    private int _ringProgress;
 
+    private int _ringProgress;
     public int RingsProgress => _ringProgress;
 
     private void Start()

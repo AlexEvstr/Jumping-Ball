@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
         levelPassed = false;
     }
 
-
-    //TODO: Óæññ..
     private void Update()
     {
         StartGame();
