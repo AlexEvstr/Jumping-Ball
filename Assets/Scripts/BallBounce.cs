@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BallBounce : MonoBehaviour
 {
-    [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private SoundManager _audioManager;
     private Rigidbody _rigidbody;
 
     private float _bouncePower = 500.0f;

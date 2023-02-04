@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _bounceSound;
     [SerializeField] private AudioSource ringDestroySound;
