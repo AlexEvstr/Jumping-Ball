@@ -5,9 +5,9 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _bounceSound;
-    [SerializeField] private AudioSource ringDestroySound;
-    [SerializeField] private AudioSource gameOverSound;
-    [SerializeField] private AudioSource levelPassedSound;
+    [SerializeField] private AudioSource _ringDestroySound;
+    [SerializeField] private AudioSource _gameOverSound;
+    [SerializeField] private AudioSource _levelPassedSound;
 
     public void PlayBounceSound()
     {
@@ -16,17 +16,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlayRingDestroySound()
     {
-        ringDestroySound.Play();
+        _ringDestroySound.Play();
     }
 
     public void PlayGameOverSound()
     {
-        gameOverSound.Play();
+        _gameOverSound.Play();
     }
 
     public void PlayLevelPassedSound()
     {
-        levelPassedSound.Play();
+        _levelPassedSound.Play();
     }
 
 

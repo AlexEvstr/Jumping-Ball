@@ -16,7 +16,6 @@ public class GUIManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(_dataController.CurrentLevelIndex);
         _currentLevelText.text = _dataController.CurrentLevelIndex.ToString();
         _nextLevelText.text = (_dataController.CurrentLevelIndex + DataController.STEP_LEVEL).ToString();
     }

@@ -4,16 +4,19 @@ using Zenject;
 
 public class GameManager : MonoBehaviour
 {
+    private DataController _dataController;
+    private ColorChange _colorChange;
+
     public static bool gameOver;
     public static bool levelPassed;
     public static bool startMenu;
 
-    private DataController _dataController;
 
     [Inject]
-    private void Construct(DataController dataController)
+    private void Construct(DataController dataController, ColorChange colorChange)
     {
         _dataController = dataController;
+        _colorChange = colorChange;
     }
 
     [SerializeField] private GameObject _gameOverPanel;
@@ -43,11 +46,13 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel()
     {
         _dataController.IncreaseLevel();
+        PlayerPrefs.DeleteKey("colorIndex");
         SceneManager.LoadScene(0);
     }
 
     public void ReloadScene()
     {
+        _colorChange.SaveColorIndex();
         SceneManager.LoadScene(0);
     }
 

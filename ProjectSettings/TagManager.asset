@@ -9,6 +9,7 @@ TagManager:
   - GoodGround
   - BadGround
   - Ball
+  - Cylinder
   layers:
   - Default
   - TransparentFX

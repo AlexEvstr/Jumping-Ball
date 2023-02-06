@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 2857068129816207514}
   m_Layer: 0
   m_Name: Finish
-  m_TagString: Untagged
+  m_TagString: Cylinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543,7 +543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfea42ad3992492ca05e2c7c3bbf7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioManager: {fileID: 2338647644935973556, guid: 830bb6fbd3a7f402bb94bb32b223968f, type: 3}
 --- !u!1 &3176702985838102645
 GameObject:
   m_ObjectHideFlags: 0
