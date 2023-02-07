@@ -28,6 +28,4 @@ public class SoundManager : MonoBehaviour
     {
         _levelPassedSound.Play();
     }
-
-
 }
