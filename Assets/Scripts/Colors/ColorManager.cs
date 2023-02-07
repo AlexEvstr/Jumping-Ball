@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorChange : MonoBehaviour
+public class ColorManager : MonoBehaviour
 {
     [SerializeField] private Color[] _cylinderColors;
     [SerializeField] private Color[] _goodPlatformColors;
@@ -20,14 +20,14 @@ public class ColorChange : MonoBehaviour
         {
             SetRandomColorIndex();
         }
-        ChangeLevelColor();
+        SetLevelColor();
     }
 
-    private void ChangeLevelColor()
+    public void SetLevelColor()
     { 
-        ChangeCylinderColor();
-        ChangeGoodPlatformColor();
-        ChangeBadPlatformColor();
+        SetCylinderColor();
+        SetGoodPlatformColor();
+        SetBadPlatformColor();
     }
 
     private void SetRandomColorIndex()
@@ -40,7 +40,7 @@ public class ColorChange : MonoBehaviour
         PlayerPrefs.SetInt("colorIndex", _colorIndex);
     }
 
-    private void ChangeCylinderColor()
+    private void SetCylinderColor()
     {
         GameObject[] Cylinders = GameObject.FindGameObjectsWithTag("Cylinder");
 
@@ -50,7 +50,7 @@ public class ColorChange : MonoBehaviour
         }
     }
 
-    private void ChangeGoodPlatformColor()
+    private void SetGoodPlatformColor()
     {
         GameObject[] GoodPlatforms = GameObject.FindGameObjectsWithTag("GoodGround");
 
@@ -60,7 +60,7 @@ public class ColorChange : MonoBehaviour
         }
     }
 
-    private void ChangeBadPlatformColor()
+    private void SetBadPlatformColor()
     {
         GameObject[] BadPlatforms = GameObject.FindGameObjectsWithTag("BadGround");
 

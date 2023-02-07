@@ -5,7 +5,7 @@ using Zenject;
 public class GameManager : MonoBehaviour
 {
     private DataController _dataController;
-    private ColorChange _colorChange;
+    private ColorManager _colorIndex;
 
     public static bool gameOver;
     public static bool levelPassed;
@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
 
 
     [Inject]
-    private void Construct(DataController dataController, ColorChange colorChange)
+    private void Construct(DataController dataController, ColorManager colorIndex)
     {
         _dataController = dataController;
-        _colorChange = colorChange;
+        _colorIndex = colorIndex;
     }
 
     [SerializeField] private GameObject _gameOverPanel;
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        _colorChange.SaveColorIndex();
+        _colorIndex.SaveColorIndex();
         SceneManager.LoadScene(0);
     }
 

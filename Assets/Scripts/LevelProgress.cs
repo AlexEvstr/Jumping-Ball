@@ -8,7 +8,6 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private LevelBuilder _levelBuilder;
     [SerializeField] private BallFacade _ballFacade;
 
-    private float _progress = 0.1f;
     private const float STEP_PROGRESS = .1f;
 
     public void FillProgress()

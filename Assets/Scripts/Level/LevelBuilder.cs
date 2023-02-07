@@ -19,7 +19,7 @@ public class LevelBuilder : MonoBehaviour
     {
         _parentLevel = gameObject;
         _intervalSpawnPlatforms = 5.0f;
-        _levelLength = Random.Range(5, 30);
+        _levelLength = Random.Range(5, 20);
         _ringControllers = new Queue<RingController>();
 
         SpawnPlatform(0);
