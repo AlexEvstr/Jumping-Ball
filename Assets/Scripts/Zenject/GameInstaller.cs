@@ -10,7 +10,6 @@ public class GameInstaller : MonoInstaller
 
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private DataController _dataController;
-    [SerializeField] private ColorManager _colorManager;
 
     public override void InstallBindings()
     {
@@ -18,7 +17,6 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInstance(_gameManager);
         Container.BindInstance(_dataController);
-        Container.BindInstance(_colorManager);
     }
 
     private void BallFasadBinding()

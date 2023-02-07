@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ColorManager : MonoBehaviour
 {
@@ -8,18 +7,20 @@ public class ColorManager : MonoBehaviour
     [SerializeField] private Color[] _goodPlatformColors;
     [SerializeField] private Color[] _badPlatformColors;
 
-    private int _colorIndex;
+    [SerializeField] private Material _materialGoodPlatform;
+    [SerializeField] private Material _materialCylinder;
+
+    private DataController _data;
+
+    [Inject]
+    private void Construct(DataController data)
+    {
+        _data = data;
+    }
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("colorIndex"))
-        {
-            _colorIndex = PlayerPrefs.GetInt("colorIndex");
-        }
-        else
-        {
-            SetRandomColorIndex();
-        }
+        CalculateRandomIndexColor();
         SetLevelColor();
     }
 
@@ -27,46 +28,21 @@ public class ColorManager : MonoBehaviour
     { 
         SetCylinderColor();
         SetGoodPlatformColor();
-        SetBadPlatformColor();
     }
 
-    private void SetRandomColorIndex()
+    private void CalculateRandomIndexColor()
     {
-        _colorIndex = Random.Range(0, 15);
-    }
-
-    public void SaveColorIndex()
-    {
-        PlayerPrefs.SetInt("colorIndex", _colorIndex);
+        if (_data.ColorIndex != -1) return;
+        _data.ColorIndex = Random.Range(0, 15);
     }
 
     private void SetCylinderColor()
     {
-        GameObject[] Cylinders = GameObject.FindGameObjectsWithTag("Cylinder");
-
-        foreach (GameObject cylinder in Cylinders)
-        {
-            cylinder.GetComponent<MeshRenderer>().material.color = _cylinderColors[_colorIndex];
-        }
+        _materialCylinder.color = _cylinderColors[_data.ColorIndex];
     }
 
     private void SetGoodPlatformColor()
     {
-        GameObject[] GoodPlatforms = GameObject.FindGameObjectsWithTag("GoodGround");
-
-        foreach (GameObject platform in GoodPlatforms)
-        {
-            platform.GetComponent<MeshRenderer>().material.color = _goodPlatformColors[_colorIndex];
-        }
-    }
-
-    private void SetBadPlatformColor()
-    {
-        GameObject[] BadPlatforms = GameObject.FindGameObjectsWithTag("BadGround");
-
-        foreach (GameObject platform in BadPlatforms)
-        {
-            platform.GetComponent<MeshRenderer>().material.color = _badPlatformColors[_colorIndex];
-        }
+        _materialGoodPlatform.color = _goodPlatformColors[_data.ColorIndex];
     }
 }

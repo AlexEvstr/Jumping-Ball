@@ -4,16 +4,30 @@ public class DataController : MonoBehaviour
 {
     public const int STEP_LEVEL = 1;
 
-    public int CurrentLevelIndex => _currentLevelIndex;
-    private int _currentLevelIndex;
+    public int CurrentLevelIndex { get; private set; }
+    public int ColorIndex { get; set; }
 
     private void Awake()
     {
-        _currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 1);
+        CurrentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 1);
+        if (PlayerPrefs.HasKey("colorIndex"))
+            ColorIndex = PlayerPrefs.GetInt("colorIndex");
+        else
+            ColorIndex = -1;
     }
 
     public void IncreaseLevel()
     {
-        PlayerPrefs.SetInt("currentLevelIndex", _currentLevelIndex + 1);
+        PlayerPrefs.SetInt("currentLevelIndex", CurrentLevelIndex + 1);
+    }
+
+    public void SaveColorIndex()
+    {
+        PlayerPrefs.SetInt("colorIndex", ColorIndex);
+    }
+
+    public void ResetColorIndex()
+    {
+        ColorIndex = -1;
     }
 }
