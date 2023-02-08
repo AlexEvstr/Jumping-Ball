@@ -3,12 +3,12 @@ using Zenject;
 
 public class ColorManager : MonoBehaviour
 {
-    [SerializeField] private Color[] _cylinderColors;
-    [SerializeField] private Color[] _goodPlatformColors;
-    [SerializeField] private Color[] _badPlatformColors;
-
-    [SerializeField] private Material _materialGoodPlatform;
     [SerializeField] private Material _materialCylinder;
+    [SerializeField] private Material _materialPlatform;
+    [SerializeField] private Camera _mainCamera;
+    
+
+    [SerializeField] private Palette[] _palettes = new Palette[0];
 
     private DataController _data;
 
@@ -27,7 +27,8 @@ public class ColorManager : MonoBehaviour
     public void SetLevelColor()
     { 
         SetCylinderColor();
-        SetGoodPlatformColor();
+        SetPlatformColor();
+        SetBackgroundColor();
     }
 
     private void CalculateRandomIndexColor()
@@ -38,11 +39,32 @@ public class ColorManager : MonoBehaviour
 
     private void SetCylinderColor()
     {
-        _materialCylinder.color = _cylinderColors[_data.ColorIndex];
+        _materialCylinder.color = _palettes[_data.ColorIndex]._cylinderColor;
     }
 
-    private void SetGoodPlatformColor()
+    private void SetPlatformColor()
     {
-        _materialGoodPlatform.color = _goodPlatformColors[_data.ColorIndex];
+        _materialPlatform.color = _palettes[_data.ColorIndex]._platformColor;
+    }
+
+    private void SetBackgroundColor()
+    {
+        _mainCamera.backgroundColor = _palettes[_data.ColorIndex]._background;
     }
 }
+
+    [System.Serializable]
+    public class Palette
+    {
+        public Color _platformColor;
+        public Color _cylinderColor;
+        public Color _background;
+
+        private Palette(Color platformColor, Color cylinderColor, Color background)
+        {
+            _platformColor = platformColor;
+            _cylinderColor = cylinderColor;
+            _background = background;
+        }
+    }
+        

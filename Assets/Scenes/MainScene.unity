@@ -1491,6 +1491,8 @@ MonoBehaviour:
   - {r: 0.5647059, g: 0.023529412, b: 0.7921569, a: 0}
   - {r: 0.47058824, g: 0.21176471, b: 0.8627451, a: 0}
   - {r: 0.87058824, g: 0.9019608, b: 0.9098039, a: 0}
+  _materialGoodPlatform: {fileID: 2100000, guid: c6573c6761b034a71aacab11f84bdeaf, type: 2}
+  _materialCylinder: {fileID: 2100000, guid: 7b4ca526047bb444d8d1a02badd7a7ea, type: 2}
 --- !u!4 &1171214614
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,7 +1777,6 @@ MonoBehaviour:
   _soundManager: {fileID: 25957841}
   _gameManager: {fileID: 1541235306}
   _dataController: {fileID: 780384787}
-  _colorManager: {fileID: 1171214613}
 --- !u!114 &1408691644
 MonoBehaviour:
   m_ObjectHideFlags: 0
