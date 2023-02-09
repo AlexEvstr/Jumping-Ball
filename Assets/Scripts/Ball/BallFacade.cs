@@ -41,18 +41,17 @@ public class BallFacade : MonoBehaviour
     {
         if (_player.transform.position.y < _currentRing.transform.position.y - 1f)
         {
-            _ringProgress++;
-            _ballAcceleration.IncreaseCountPassRing();
             OnPassRing();
+            _ballAcceleration.IncreaseCountPassRing();
         }
     }
 
     public void OnPassRing()
     {
+        _ringProgress++;
         _currentRing.DestroyRing();
         _levelProgress.FillProgress();
         _soundManager.PlayRingDestroySound();
         _currentRing = _levelBuilder.GetActiveRing();
-
     }
 }
