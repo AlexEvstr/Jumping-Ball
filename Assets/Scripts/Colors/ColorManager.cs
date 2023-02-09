@@ -5,8 +5,10 @@ public class ColorManager : MonoBehaviour
 {
     [SerializeField] private Material _materialCylinder;
     [SerializeField] private Material _materialPlatform;
+    public Material _materialBall;
     [SerializeField] private Camera _mainCamera;
-    
+    public Color[] _ballColors;
+
 
     [SerializeField] private Palette[] _palettes = new Palette[0];
 
@@ -50,6 +52,16 @@ public class ColorManager : MonoBehaviour
     private void SetBackgroundColor()
     {
         _mainCamera.backgroundColor = _palettes[_data.ColorIndex]._background;
+    }
+
+    public void SetBallColorRed()
+    {
+        _materialBall.color = _ballColors[1];
+    }
+
+    public void SetBallColorBlue()
+    {
+        _materialBall.color = _ballColors[0];
     }
 }
 
