@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4446387497953809516}
   - component: {fileID: 4446387497953809518}
   - component: {fileID: 4446387497953809489}
+  - component: {fileID: 1038652001}
+  - component: {fileID: 6584886258728327583}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -30,9 +32,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4446387497953809511}
-  m_LocalRotation: {x: 0.5286735, y: -0.4695789, z: 0.4695787, w: 0.5286735}
+  m_LocalRotation: {x: 0.5286748, y: -0.46957743, z: 0.46957743, w: 0.5286748}
   m_LocalPosition: {x: 0.2699995, y: 1.7300012, z: -2.3799994}
-  m_LocalScale: {x: 0.7000001, y: 0.70000017, z: 0.70000017}
+  m_LocalScale: {x: 0.70000005, y: 0.7000001, z: 0.7000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8ccc2c064c24165849d08e8901114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioManager: {fileID: 0}
 --- !u!96 &4446387497953809518
 TrailRenderer:
   serializedVersion: 2
@@ -251,3 +252,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSplashParticleEffect: {fileID: 8312256880659199421, guid: 7ef149750f1a74f28916a2aba7de7a84, type: 3}
+--- !u!114 &1038652001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446387497953809511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94664708d914d4e9f8561cd94fd8e8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSplash: {fileID: 212273826930382005, guid: 5fc358c72121b455f802b6ad24da0775, type: 3}
+--- !u!114 &6584886258728327583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446387497953809511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e0ce52d48786441b5a7bd8c1cef884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materialBall: {fileID: 0}
+  _ballDefault: {r: 0, g: 0, b: 0, a: 0}
+  _ballAcceleration: {r: 0, g: 0, b: 0, a: 0}

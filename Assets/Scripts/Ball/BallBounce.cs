@@ -1,13 +1,29 @@
 using UnityEngine;
+using Zenject;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BallBounce : MonoBehaviour
 {
-    [SerializeField] private SoundManager _audioManager;
+    #region Reference
+    private SoundManager _soundManager;
+    private BallAcceleration _ballAcceleration;
+    private BallFacade _ballFacade;
+    #endregion
+
     private Rigidbody _rigidbody;
-    private ColorManager _colorManager;
 
     private float _bouncePower = 500.0f;
-    private float _speedToDestroy = 23.0f;
+
+    [Inject]
+    private void Construct(
+        SoundManager soundManager, 
+        BallAcceleration ballAcceleration, 
+        BallFacade ballFacade)
+    {
+        _soundManager = soundManager;
+        _ballAcceleration = ballAcceleration;
+        _ballFacade = ballFacade;
+    }
 
     private void Start()
     {
@@ -16,32 +32,50 @@ public class BallBounce : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //_colorManager.SetBallColorBlue();
+        if (!_ballAcceleration.IsActive)
+            BehaviourDefault(other);
+        else
+            BehaviourActiveAcceleration(other);
+    }
+
+    private void BehaviourDefault(Collision other)
+    {
         if (other.gameObject.CompareTag("GoodGround") && GameManager.gameOver != true)
         {
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _bouncePower * Time.deltaTime, _rigidbody.velocity.z);
-          
-            _audioManager.PlayBounceSound();
+            _soundManager.PlayBounceSound();
         }
         else if (other.gameObject.CompareTag("BadGround"))
         {
             GameManager.gameOver = true;
 
-            _audioManager.PlayGameOverSound();
+            _soundManager.PlayGameOverSound();
         }
         else if (other.gameObject.CompareTag("Finish"))
         {
             GameManager.levelPassed = true;
 
-            _audioManager.PlayLevelPassedSound();
+            _soundManager.PlayLevelPassedSound();
         }
+        _ballAcceleration.ResetCountPassRing();
     }
-    private void Update()
+
+    private void BehaviourActiveAcceleration(Collision other)
     {
-        if (_rigidbody.velocity.magnitude > _speedToDestroy)
+        if (other.gameObject.CompareTag("Finish"))
         {
-            Debug.Log("more then 23");
-            _colorManager.SetBallColorRed();
+            GameManager.levelPassed = true;
+
+            _soundManager.PlayLevelPassedSound();
         }
+        else
+        {
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _bouncePower * Time.deltaTime, _rigidbody.velocity.z);
+            
+            _ballFacade.OnPassRing();
+
+            _soundManager.PlayBounceSound();
+        }
+        _ballAcceleration.SetActive(false);
     }
 }
