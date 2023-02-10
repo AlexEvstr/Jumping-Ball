@@ -70,9 +70,9 @@ public class BallBounce : MonoBehaviour
         }
         else
         {
+            _ballFacade.OnPassRing();
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _bouncePower * Time.deltaTime, _rigidbody.velocity.z);
             
-            _ballFacade.OnPassRing();
 
             _soundManager.PlayBounceSound();
         }
