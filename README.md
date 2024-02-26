@@ -1,5 +1,4 @@
 # Jumping-Ball
-Это мой последний на данный момент проект. Данная игра - аналог популярной игры Helix Jump.
 https://youtube.com/shorts/iVbdwi3Q2Is?feature=share
 
 We present to your attention an exciting game that will appeal to people of all ages!
